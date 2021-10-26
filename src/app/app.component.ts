@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as counterActions from './state/counter.actions';
 import { selectCount } from './state/counter.selectors';
@@ -8,9 +8,12 @@ import { selectCount } from './state/counter.selectors';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   counter$ = this.store.select(selectCount);
   constructor(private store: Store) {}
+  ngOnInit(): void {
+    // this.store.dispatch(counterActions.setCounterValue({ counter: 6 }));
+  }
   increase() {
     this.store.dispatch(counterActions.incrementCounter());
   }

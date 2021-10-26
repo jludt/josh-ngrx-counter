@@ -13,5 +13,9 @@ export const counterReducer = createReducer(
   })),
   on(counterActions.decrementCounter, (state) => ({
     counter: state.counter - 1,
+  })),
+  on(counterActions.setCounterValue, (state, action) => ({
+    ...state,
+    count: action.counter,
   }))
 );
